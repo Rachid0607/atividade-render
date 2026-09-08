@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Paulista - Futebol</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  body { padding-top: 70px; }
+  .card-img-top { height: 160px; object-fit: cover; }
+  .carousel-item img { height: 350px; object-fit: cover; }
+  #spinnerCarregando { padding: 60px 0; }
+</style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarPrincipal" data-bs-offset="90" tabindex="0">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#inicio">
+      Painel Times Paulistas
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse d-none d-lg-block" id="navbarPrincipal">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="menuLateral">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link text-white" href="#inicio" data-bs-dismiss="offcanvas">Início</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="#cursos" data-bs-dismiss="offcanvas">Cursos</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="#sobre" data-bs-dismiss="offcanvas">Sobre</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="#contato" data-bs-dismiss="offcanvas">Contato</a></li>
+    </ul>
+  </div>
+</div>
+<section id="inicio" class="container mt-4">
+  <div id="carouselDestaques" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselDestaques" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://placehold.co/1200x350/c1121f/ffffff?text=Sao+Paulo+FC" class="d-block w-100" alt="São Paulo FC">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+          <h5>História do Maior do Mundo</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://placehold.co/1200x350/000000/ffffff?text=Corinthians" class="d-block w-100" alt="Corinthians">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+          <h5>Galinha Trombadinha</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://placehold.co/1200x350/006437/ffffff?text=Palmeiras" class="d-block w-100" alt="Palmeiras">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+          <h5>Sem mundial</h5>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestaques" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselDestaques" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  <div class="text-center my-4">
+    <h1>Cursos sobre ser e tentar ser o maior do Brasil</h1>
+    <p class="text-muted">Aprenda a história dos quatro grandes de São Paulo.</p>
+  </div>
+</section>
+<section id="cursos" class="container py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div class="d-flex gap-2 align-items-center">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCurso">
+        <i class="bi bi-plus-circle"></i> Adicionar Curso
+      </button>
+      <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="popover"
+        title="Dica" data-bs-content="Preencha todos os campos obrigatórios para cadastrar um curso.">
+        <i class="bi bi-info-circle"></i>
+      </button>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        <i class="bi bi-funnel"></i> Filtrar: <span id="filtroAtual">Todos</span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item filtro-item" href="#" data-categoria="Todos">Todos</a></li>
+        <li><a class="dropdown-item filtro-item" href="#" data-categoria="São Paulo">São Paulo</a></li>
+        <li><a class="dropdown-item filtro-item" href="#" data-categoria="Corinthians">Corinthians</a></li>
+        <li><a class="dropdown-item filtro-item" href="#" data-categoria="Palmeiras">Palmeiras</a></li>
+        <li><a class="dropdown-item filtro-item" href="#" data-categoria="Santos">Santos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label mb-1">Meta de cursos cadastrados</label>
+    <div class="progress" role="progressbar">
+      <div id="barraProgresso" class="progress-bar bg-success" style="width: 0%">0%</div>
+    </div>
+  </div>
+  <div id="areaAlertas"></div>
+  <div id="spinnerCarregando" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando</span>
+    </div>
+    <p class="mt-2 text-muted">Carregando cursos</p>
+  </div>
+  <div id="listaCursos" class="row g-3 d-none"></div>
+  <nav class="mt-4 d-flex justify-content-center">
+    <ul id="paginacao" class="pagination"></ul>
+  </nav>
+</section>
+<section id="sobre" class="container py-5 bg-light rounded">
+  <h2>Painel</h2>
+  <p>
+    Este painel foi desenvolvido para encher linguiça e falar sobre a programação e os times de SP</p>
+</section>
+<section id="contato" class="container py-5">
+  <h2>Contato</h2>
+  <form class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" placeholder="">
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">E-mail</label>
+      <input type="email" class="form-control" placeholder="">
+    </div>
+    <div class="col-12">
+      <label class="form-label">Mensagem</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
+    <div class="col-12">
+      <button type="button" class="btn btn-dark">Enviar</button>
+    </div>
+  </form>
+</section>
+<footer class="bg-dark text-white text-center py-3 mt-4">
+  <small>Desenvolvido por João Rachid</small>
+</footer>
+<div class="modal fade" id="modalCurso" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="formCurso" class="needs-validation" novalidate>
+        <div class="modal-header">
+          <h5 class="modal-title">Adicionar Curso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="bi bi-mortarboard"></i></span>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="inputTitulo" placeholder="" required>
+              <label for="inputTitulo">Título do curso</label>
+              <div class="invalid-feedback">Informe o título do curso.</div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="inputInstrutor" placeholder="Instrutor" required>
+            <label for="inputInstrutor">Instrutor</label>
+            <div class="invalid-feedback">Informe o nome do instrutor.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="selectCategoria">Time (categoria)</label>
+            <select class="form-select" id="selectCategoria" required>
+              <option value="" selected disabled>Selecione...</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Corinthians">Corinthians</option>
+              <option value="Palmeiras">Palmeiras</option>
+              <option value="Santos">Santos</option>
+            </select>
+            <div class="invalid-feedback">Selecione uma categoria.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="inputDescricao">Descrição</label>
+            <textarea class="form-control" id="inputDescricao" rows="2" required></textarea>
+            <div class="invalid-feedback">Escreva uma breve descrição.</div>
+          </div>
+          <div class="mb-3">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Curso</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastAviso" class="toast align-items-center text-white border-0" role="status">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMensagem">Ação realizada!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+let cursos = [
+  { id: 1, titulo: "Origens do Tricolor", instrutor: "Marcos Silva", categoria: "São Paulo", nivel: 2, destaque: true, descricao: "A fundação do São Paulo FC e sua trajetória até se tornar tricampeão mundial." },
+  { id: 2, titulo: "Fiel Torcida", instrutor: "Ana Souza", categoria: "Corinthians", nivel: 3, destaque: false, descricao: "A força da torcida corinthiana e os principais títulos do clube." },
+  { id: 3, titulo: "Academia de Craques", instrutor: "Pedro Lima", categoria: "Palmeiras", nivel: 4, descoberto: false, destaque: false, descricao: "Como o Palmeiras revela talentos através da base." },
+  { id: 4, titulo: "Vila Belmiro em Detalhes", instrutor: "Carla Nunes", categoria: "Santos", nivel: 1, destaque: false, descricao: "A história do Santos e o legado deixado por Pelé." }
+];
+const metaCursos = 8;
+let proximoId = 5;
+let filtroAtivo = "Todos";
+let paginaAtual = 1;
+const cursosPorPagina = 3;
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document.getElementById("spinnerCarregando").classList.add("d-none");
+    document.getElementById("listaCursos").classList.remove("d-none");
+    renderizarCursos();
+    mostrarAlerta("Cursos carregados com sucesso!", "success");
+  }, 1500);
+});
+function mostrarAlerta(mensagem, tipo) {
+  const area = document.getElementById("areaAlertas");
+  const alerta = document.createElement("div");
+  alerta.className = "alert alert-" + tipo + " alert-dismissible fade show";
+  alerta.innerHTML = mensagem + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+  area.appendChild(alerta);
+  setTimeout(() => alerta.remove(), 4000);
+}
+
+function mostrarToast(mensagem, cor) {
+  const toastEl = document.getElementById("toastAviso");
+  document.getElementById("toastMensagem").innerText = mensagem;
+  toastEl.className = "toast align-items-center text-white border-0 bg-" + cor;
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
+
+function atualizarProgresso() {
+  let porcentagem = Math.min(Math.round((cursos.length / metaCursos) * 100), 100);
+  const barra = document.getElementById("barraProgresso");
+  barra.style.width = porcentagem + "%";
+  barra.innerText = porcentagem + "%";
+}
+function renderizarCursos() {
+  const lista = document.getElementById("listaCursos");
+  lista.innerHTML = "";
+
+  const cursosFiltrados = filtroAtivo === "Todos"
+    ? cursos
+    : cursos.filter(c => c.categoria === filtroAtivo);
+  const totalPaginas = Math.max(Math.ceil(cursosFiltrados.length / cursosPorPagina), 1);
+  if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+  const inicio = (paginaAtual - 1) * cursosPorPagina;
+  const cursosPagina = cursosFiltrados.slice(inicio, inicio + cursosPorPagina);
+  const cores = { "São Paulo": "danger", "Corinthians": "dark", "Palmeiras": "success", "Santos": "secondary" };
+  cursosPagina.forEach(curso => {
+    const col = document.createElement("div");
+    col.className = "col-md-4";
+    col.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        <img src="https://placehold.co/400x160?text=${encodeURIComponent(curso.categoria)}" class="card-img-top" alt="${curso.categoria}">
+        <div class="card-body d-flex flex-column">
+          <span class="badge bg-${cores[curso.categoria]} mb-2 align-self-start">${curso.categoria}</span>
+          <h5 class="card-title">${curso.titulo} ${curso.destaque ? '<i class="bi bi-star-fill text-warning"></i>' : ""}</h5>
+          <p class="card-text small text-muted">Instrutor: ${curso.instrutor} | Nível: ${curso.nivel}/5</p>
+
+          <button class="btn btn-outline-primary btn-sm mt-auto" type="button" data-bs-toggle="collapse" data-bs-target="#detalhes${curso.id}">
+            Detalhes
+          </button>
+          <div class="collapse mt-2" id="detalhes${curso.id}">
+            <p class="small">${curso.descricao}</p>
+          </div>
+
+          <button class="btn btn-outline-danger btn-sm mt-2" onclick="excluirCurso(${curso.id})">
+            <i class="bi bi-trash"></i> Excluir
+          </button>
+        </div>
+      </div>`;
+    lista.appendChild(col);
+  });
+
+  renderizarPaginacao(totalPaginas);
+  atualizarProgresso();
+}
+function renderizarPaginacao(totalPaginas) {
+  const paginacao = document.getElementById("paginacao");
+  paginacao.innerHTML = "";
+  for (let i = 1; i <= totalPaginas; i++) {
+    const item = document.createElement("li");
+    item.className = "page-item" + (i === paginaAtual ? " active" : "");
+    item.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      paginaAtual = i;
+      renderizarCursos();
+    });
+    paginacao.appendChild(item);
+  }
+}
+
+function excluirCurso(id) {
+  cursos = cursos.filter(c => c.id !== id);
+  renderizarCursos();
+  mostrarToast("Curso removido com sucesso!", "danger");
+}
+document.querySelectorAll(".filtro-item").forEach(item => {
+  item.addEventListener("click", function (e) {
+    e.preventDefault();
+    filtroAtivo = this.dataset.categoria;
+    document.getElementById("filtroAtual").innerText = filtroAtivo;
+    paginaAtual = 1;
+    renderizarCursos();
+  });
+});
+document.getElementById("inputNivel").addEventListener("input", function () {
+  document.getElementById("valorNivel").innerText = this.value;
+});
+document.getElementById("formCurso").addEventListener("submit", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (!this.checkValidity()) {
+    this.classList.add("was-validated");
+    mostrarAlerta("Preencha todos os campos obrigatórios!", "danger");
+    return;
+  }
+  const novoCurso = {
+    id: proximoId++,
+    titulo: document.getElementById("inputTitulo").value,
+    instrutor: document.getElementById("inputInstrutor").value,
+    categoria: document.getElementById("selectCategoria").value,
+    descricao: document.getElementById("inputDescricao").value,
+    nivel: document.getElementById("inputNivel").value,
+    destaque: document.getElementById("inputDestaque").checked
+  };
+  cursos.push(novoCurso);
+  renderizarCursos();
+  mostrarToast("Curso salvo com sucesso!", "success");
+  this.reset();
+  this.classList.remove("was-validated");
+  bootstrap.Modal.getInstance(document.getElementById("modalCurso")).hide();
+});
+document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => new bootstrap.Popover(el));
+</script>
+</body>
+</html>
