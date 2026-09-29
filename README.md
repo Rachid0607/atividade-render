@@ -2,6 +2,10 @@
 
 Painel interativo sobre cursos dos grandes times de Sao Paulo.
 
+## Site publicado
+
+[Acessar o site no Render](https://atividade-render-vssm.onrender.com)
+
 ## Executar localmente
 
 ```bash
